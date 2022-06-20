@@ -6,6 +6,8 @@ plugins {
 android {
     compileSdk 31
 
+    buildFeatures.viewBinding = true
+    
     defaultConfig {
         applicationId "ru.netology.nmedia"
         minSdk 23
@@ -15,6 +17,10 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
+
+      //  dataBinding true
+
 
     buildTypes {
         release {
