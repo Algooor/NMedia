@@ -12,13 +12,9 @@ import ru.netology.nmedia.R
 import ru.netology.nmedia.databinding.PostBinding
 
 
-//typealias OnPostLikeClicked = (Post) -> Unit
-//typealias OnPostShareClicked = (Post) -> Unit
-
 internal class PostsAdapter(
     private val interactionListener: PostInteractionListener
-//    private val onLikeClicked: OnPostLikeClicked,
-//    private val onShareClicked: OnPostShareClicked
+
 ) : ListAdapter<Post, PostsAdapter.ViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
