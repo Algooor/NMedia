@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.widget.ImageButton
 import androidx.activity.viewModels
 import androidx.annotation.DrawableRes
+import ru.netology.nmedia.data.impl.PostsAdapter
 import ru.netology.nmedia.databinding.ActivityMainBinding
+import ru.netology.nmedia.databinding.PostBinding
 import ru.netology.nmedia.viewModel.PostViewModel
 
 
@@ -24,32 +26,13 @@ class MainActivity : AppCompatActivity() {
             content = "Встреча",
             published = "13.06.22"
         )
-        viewModel.data.observe(this) { post ->
-            binding.render(post)
-        }
 
-
-        binding.favorite.setOnClickListener {
-            viewModel.onLikeClicked()
-        }
-
-        binding.share.setOnClickListener {
-            viewModel.onShareClicked()
+        val adapter = PostsAdapter(viewModel::onLikeClicked, viewModel::onShareClicked)
+        binding.postsRecyclerView.adapter = adapter
+        viewModel.data.observe(this) { posts ->
+            adapter.submitList(posts)
         }
     }
-
-    private fun ActivityMainBinding.render(post: Post) {
-        authorName.text = post.author
-        postsText.text = post.content
-        date.text = post.published
-        shareCount.text = post.reductionShare
-        likesCount.text = post.reductionLike
-        favorite.setImageResource(getLikeIconResId(post.likedByMe))
-    }
-
-    @DrawableRes
-    private fun getLikeIconResId(liked: Boolean) =
-        if (liked) R.drawable.ic_baseline_favorite_24 else R.drawable.ic_favorite_24
 }
 
 
