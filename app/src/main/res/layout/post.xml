@@ -11,11 +11,9 @@
         android:layout_width="@dimen/post_avatar_size"
         android:layout_height="@dimen/post_avatar_size"
         android:contentDescription="@string/avatar_description"
+        android:src="@mipmap/ic_launcher"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@mipmap/ic_launcher"/>
-
-
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/authorName"
@@ -43,12 +41,11 @@
         app:layout_constraintTop_toBottomOf="@id/authorName"
         tools:text="05.06.2022" />
 
-    <androidx.appcompat.widget.AppCompatImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/options"
+        style="@style/Widget.AppTheme.OptionsCheckbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:src="@drawable/ic_options_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -64,8 +61,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/common_spacing"
-        app:layout_constraintTop_toBottomOf="@id/header_barrier"
-        android:text="@string/content_description" />
+        android:text="@string/content_description"
+        app:layout_constraintTop_toBottomOf="@id/header_barrier" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier_under_post"
@@ -74,45 +71,28 @@
         app:barrierDirection="bottom"
         app:constraint_referenced_ids="posts_text" />
 
-    <androidx.appcompat.widget.AppCompatImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/favorite"
-        android:layout_width="0dp"
+        style="@style/Widget.AppTheme.LikeCheckbox"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         android:background="@android:color/transparent"
-        android:src="@drawable/ic_favorite_24"
+        android:checkable="true"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/barrier_under_post" />
+        app:layout_constraintTop_toBottomOf="@id/barrier_under_post"
+        tools:text="100500" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/likes_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        app:layout_constraintStart_toEndOf="@id/favorite"
-        app:layout_constraintTop_toTopOf="@id/favorite"
-        app:layout_constraintVertical_bias="0.09"
-        tools:text="10" />
-
-    <androidx.appcompat.widget.AppCompatImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/share"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/ic_share_24"
-        app:layout_constraintStart_toEndOf="@id/likes_count"
-        app:layout_constraintTop_toBottomOf="@id/barrier_under_post" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/share_count"
+        style="@style/Widget.AppTheme.ShareCheckbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        app:layout_constraintStart_toEndOf="@id/share"
-        app:layout_constraintTop_toTopOf="@id/share"
-        />
+        android:background="@android:color/transparent"
+        android:checkable="true"
+        app:icon="@drawable/ic_share_24"
+        app:layout_constraintStart_toEndOf="@id/favorite"
+        app:layout_constraintTop_toBottomOf="@id/barrier_under_post"
+        tools:text="100500" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/visibility"
