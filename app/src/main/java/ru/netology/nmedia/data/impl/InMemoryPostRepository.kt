@@ -20,7 +20,7 @@ class InMemoryPostRepository : PostRepository {
                 id = index + 1L,
                 author = "Igor",
                 content = "Совершенно рандомное сообщение № $index",
-                published = "30.06.22"
+                published = "30.06.22",
             )
         }
     )
@@ -56,11 +56,16 @@ class InMemoryPostRepository : PostRepository {
         if (post.id == PostRepository.NEW_POST_ID) insert(post) else update(post)
     }
 
+    override fun playVideo(post: Post) {
+        TODO("Not yet implemented")
+    }
+
     private fun update(post: Post) {
         data.value = posts.map {
             if (it.id == post.id) post else it
         }
     }
+
 
     private fun insert(post: Post) {
         data.value = listOf(

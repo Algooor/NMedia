@@ -43,7 +43,7 @@ internal class PostsAdapter(
                             listener.onRemoveClicked(post)
                             true
                         }
-                        R.id.edit -> {
+                        R.id.editOptionsMenu -> {
                             listener.onEditClicked(post)
                             true
                         }
@@ -59,6 +59,8 @@ internal class PostsAdapter(
             binding.share.setOnClickListener { listener.onShareClicked(post) }
             binding.options.setOnClickListener { listener.onRemoveClicked(post) }
             binding.options.setOnClickListener { popupMenu.show() }
+            binding.playVideo.setOnClickListener { listener.onVideoPlayClicked(post) }
+            binding.videoView.setOnClickListener { listener.onVideoPlayClicked(post) }
         }
 
         fun bind(post: Post) {
