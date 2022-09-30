@@ -17,10 +17,12 @@ class PostViewModel(application: Application) : AndroidViewModel(application), P
     private val repository: PostRepository = FilePostRepository(application)
     val data by repository::data
 
-    val currentPost = MutableLiveData<Post?>(null)
+    private val currentPost = MutableLiveData<Post?>(null)
     val navigateToPostContentScreenEvent = SingleLiveEvent<String>()
+    val navigateToCurrentPostScreenEvent = SingleLiveEvent<Post>()
     val sharePostContent = SingleLiveEvent<String>()
     val videoPlay = SingleLiveEvent<Unit>()
+
 
     fun onSaveButtonClicked(content: String) {
 
@@ -63,6 +65,8 @@ class PostViewModel(application: Application) : AndroidViewModel(application), P
     fun onAddClicked() {
         navigateToPostContentScreenEvent.call()
     }
-
+    override fun onPostClicked(post: Post) {
+        navigateToCurrentPostScreenEvent.value = post
+    }
 
 }
